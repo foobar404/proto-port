@@ -6,29 +6,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Austin Michaud</title>
 
+    <link rel="stylesheet" href="./css/aniamtions.css">
     <link rel="stylesheet" href="./css/index.css">
 </head>
 
 <body>
     <!-- site navigation -->
-    <nav></nav>
+    <nav>
+        <div id="fill">
+            <div id="buttons">
+                <a href="#info">contact</a>
+                <a href="#headline_section">headline projects</a>
+                <a href="#project_section">all projects</a>
+                <a href="#about_section">about</a>
+            </div>
+        </div>
+    </nav>
 
     <!-- main section -->
     <main id="main_section">
         <div id="left">
             <!-- avatar box -->
-            <img id="avatar" src="./media/avatar.jpg" alt="me standing in from of some buildings">
+            <div id="avatar">
+                <img class="face bottom" src="./media/avatar_bottom.jpg" alt="bottom of poster">
+                <img class="face right" src="./media/avatar_right.jpg" alt="right of poster">
+                <img class="face left" src="./media/avatar_left.jpg" alt="left of poster">
+                <img class="face top" src="./media/avatar_top.jpg" alt="top of poster">
+                <img class="face front" src="./media/avatar_front.jpg" alt="front of poster">
+            </div>
+
             <!-- info box -->
-            <section id="info"> </section>
+            <section id="info">
+                <h1>Austin Michaud</h1>
+                <h3>Web Developer</h3>
+                <div id="links">
+                    <a href="mailto:austinthemichaud@gmail.com">
+                        <b>Email</b>
+                        <span>austinthemichaud@gmail.com</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/austin-michaud-9b25aa141/">
+                        <b>Linkedin</b>
+                        <span>https://www.linkedin.com/in/austin-michaud-9b25aa141/</span>
+                    </a>
+                    <a href="https://github.com/foobar404">
+                        <b>Github</b>
+                        <span>https://github.com/foobar404</span>
+                    </a>
+                    <a href="https://drive.google.com/file/d/1gjsbwj7WpbOJtKop523bESNTfeRDhkEM/view?usp=sharing">
+                        <b>Resume</b>
+                        <span>https://drive.google.com/file/d/1gjsbwj7WpbOJtKop523bESNTfeRDhkEM/view?usp=sharing</span>
+                    </a>
+                </div>
+            </section>
         </div>
         <!-- game -->
         <canvas id="right" class="game"></canvas>
     </main>
     <!-- headline projects -->
     <main id="headline_section">
-        <section></section>
-        <section></section>
-        <section></section>
+        <section><video muted loop src="./media/headline/3t.mp4"></video></section>
+        <section><video muted loop src="./media/headline/chess.mp4"></video></section>
+        <section><video muted loop src="./media/headline/wave.mp4"></video></section>
     </main>
     <!-- all projects -->
     <main id="project_section">
@@ -51,7 +89,15 @@
         <p>i made this site, its mine &#8482;</p>
     </footer>
 
+
+    <!-- Link to the last version of BabylonJS -->
+    <script src="https://preview.babylonjs.com/babylon.js"></script>
+    <!-- Link to the last version of BabylonJS loaders to enable loading filetypes such as .gltf -->
+    <script src="https://preview.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+
     <script src="./js/index.js"></script>
+    <script src="./js/game.js"></script>
+
 </body>
 
 </html>
