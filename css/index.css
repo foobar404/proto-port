@@ -155,6 +155,28 @@ nav #fill #buttons {
     width: 0 !important;
 }
 
+#about_section {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+#about_section img {
+    height: 100%;
+    width: 50%;
+    object-fit: cover;
+}
+
+
+#about_section blockquote {
+    width: 20%;
+    line-height: 2;
+    font-size: 22px;
+}
+
 footer {
     width: 100%;
     min-height: 30px;

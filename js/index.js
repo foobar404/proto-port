@@ -51,3 +51,15 @@ $$("video").forEach(video => {
         e.currentTarget.parentNode.classList.toggle("full")
     }
 })
+
+//about
+let hue = 0
+$("#pose").onmousemove = e => {
+    hue += 5
+    $("#pose").style.filter = `hue-rotate(${hue}deg)`
+}
+
+$("#pose").onmouseleave = e => {
+    hue = 0
+    $("#pose").style.filter = `hue-rotate(${hue}deg)`
+}
