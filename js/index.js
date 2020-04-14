@@ -5,10 +5,7 @@ const log = console.log
 log("hi friend")
 
 
-//navbar
-$("nav").onclick = e => {
-    $("#fill #buttons").classList.toggle("flex");
-}
+
 
 
 //setup main section 
@@ -51,6 +48,33 @@ $$("video").forEach(video => {
         e.currentTarget.parentNode.classList.toggle("full")
     }
 })
+
+//projects
+
+$$(".project").forEach(p => {
+    p.style.height = getComputedStyle(p).width
+})
+
+$$(".skill").forEach(skill => {
+    skill.onclick = e => {
+        $$(".skill").forEach(x => {
+            x.style.color = ""
+        })
+
+        let skill_name = e.currentTarget.innerText;
+        e.currentTarget.style.color = "#0089ff"
+
+        $$(".project").forEach(project => {
+            project.classList.add("hide")
+        })
+
+        $$(`.${skill_name}`).forEach(i => {
+            i.classList.remove("hide")
+        })
+    }
+})
+
+
 
 //about
 let hue = 0

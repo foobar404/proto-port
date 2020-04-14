@@ -1,0 +1,41 @@
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    width: 100vw;
+    height: 20px;
+    z-index: 100;
+
+    background: linear-gradient(185deg, #f5acdb, #0696d9, #7f3074, #e63604);
+    background-size: 800% 800%;
+
+    -webkit-animation: pulse 5s ease infinite;
+    -moz-animation: pulse 5s ease infinite;
+    animation: pulse 5s ease infinite;
+}
+
+nav #fill {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+nav #fill #buttons {
+    position: absolute;
+    top: 100%;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    display: none;
+}
+
+#fill #buttons>* {
+    margin-right: 15px;
+    height: 35px;
+    width: 125px;
+}
+
+.flex {
+    display: flex !important;
+}

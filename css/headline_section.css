@@ -1,0 +1,31 @@
+#headline_section {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    background: #000;
+
+
+}
+
+#headline_section section {
+    width: 33.33%;
+    height: 100%;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+
+    transition: .25s cubic-bezier(0, 1.24, 0.65, 0.81);
+}
+
+#headline_section section video {
+    height: 100%;
+}
+
+.full {
+    width: 100% !important;
+}
+
+.hide {
+    width: 0 !important;
+}

@@ -1,0 +1,74 @@
+#main_section {
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+#main_section #left {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 25%;
+}
+
+#main_section #left>* {
+    height: 50%;
+    width: 100%;
+}
+
+#left #avatar {
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+#avatar .face {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.face.front {
+    object-fit: cover;
+    transform: rotateY(0deg);
+}
+
+.face.left {
+    transform: rotateY(-90deg);
+}
+
+.face.right {
+    transform: rotateY(90deg);
+}
+
+.face.top {
+    transform: rotateX(90deg);
+}
+
+.face.bottom {
+    transform: rotateX(-90deg);
+}
+
+#info #links {
+    display: flex;
+    flex-direction: column;
+}
+
+#info h1 {
+    text-align: center;
+}
+
+#info h3 {
+    text-align: center;
+}
+
+#info #links * {
+    color: black;
+    font-size: 20px;
+    margin-left: 15px;
+}
+
+#main_section #right {
+    height: 100%;
+    width: 70%;
+    background: red;
+}

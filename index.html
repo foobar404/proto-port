@@ -6,22 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Austin Michaud</title>
 
-    <link rel="stylesheet" href="./css/aniamtions.css">
+    <link rel="stylesheet" href="./css/animations.css">
     <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/nav.css">
+    <link rel="stylesheet" href="./css/main_section.css">
+    <link rel="stylesheet" href="./css/headline_section.css">
+    <link rel="stylesheet" href="./css/project_section.css">
+    <link rel="stylesheet" href="./css/about_section.css">
+
+    <script src="https://kit.fontawesome.com/9e5a171140.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <!-- site navigation -->
-    <nav>
-        <div id="fill">
-            <div id="buttons">
-                <a href="#info">contact</a>
-                <a href="#headline_section">headline projects</a>
-                <a href="#project_section">all projects</a>
-                <a href="#about_section">about</a>
-            </div>
-        </div>
-    </nav>
+
 
     <!-- main section -->
     <main id="main_section">
@@ -41,20 +38,20 @@
                 <h3>Web Developer</h3>
                 <div id="links">
                     <a href="mailto:austinthemichaud@gmail.com">
-                        <b>Email</b>
-                        <span>austinthemichaud@gmail.com</span>
+                        <i class="fas fa-envelope"></i>
+                        <b>austinthemichaud@gmail.com</b>
                     </a>
                     <a href="https://www.linkedin.com/in/austin-michaud-9b25aa141/">
+                        <i class="fab fa-linkedin"></i>
                         <b>Linkedin</b>
-                        <span>https://www.linkedin.com/in/austin-michaud-9b25aa141/</span>
                     </a>
                     <a href="https://github.com/foobar404">
+                        <i class="fab fa-github-square"></i>
                         <b>Github</b>
-                        <span>https://github.com/foobar404</span>
                     </a>
                     <a href="https://drive.google.com/file/d/1gjsbwj7WpbOJtKop523bESNTfeRDhkEM/view?usp=sharing">
+                        <i class="fas fa-file-alt"></i>
                         <b>Resume</b>
-                        <span>https://drive.google.com/file/d/1gjsbwj7WpbOJtKop523bESNTfeRDhkEM/view?usp=sharing</span>
                     </a>
                 </div>
             </section>
@@ -70,22 +67,114 @@
     </main>
     <!-- all projects -->
     <main id="project_section">
-        <section></section>
-        <section></section>
-        <section></section>
-        <section></section>
-        <section></section>
-        <section></section>
-        <section></section>
-        <section></section>
+        <section id="left">
+            <h1>Skills Used</h1>
+            <ul>
+                <li class="skill">jquery</li>
+                <li class="skill">vue</li>
+                <li class="skill">react</li>
+                <li class="skill">ml5</li>
+                <li class="skill">php</li>
+                <li class="skill">firebase</li>
+            </ul>
+        </section>
+        <section id="right">
+            <a href="https://chess.express" class="jquery firebase project" target="_blank">
+                <img src="media/projects/chess.png" alt="">
+                <p>Play chess online with your friends, or with random opponents.</p>
+            </a>
+            <a href="https://comet.ninja" class="jquery vue project" target="_blank">
+                <img src="media/projects/comet.png" alt="">
+                <p>Online front-end text editor, create a website without downloading any software.</p>
+            </a>
+            <a href="https://ghost-writer.ga" class="ml5 jquery project" target="_blank">
+                <img src="media/projects/ghost.png" alt="">
+                <p>AI assisted lyrics making tool.</p>
+            </a>
+            <a href="https://giga-bridge.ga" class="jquery project" target="_blank">
+                <img src="media/projects/giga.png" alt="">
+                <p>Transfer data across the internet.</p>
+            </a>
+            <a href="https://foobar404.github.io/gradient.js/" class="jquery project" target="_blank">
+                <img src="media/projects/gradient.png" alt="">
+                <p>Create dynamic gradients with this javascript gradient library.</p>
+            </a>
+            <a href="http://ipalette.ml/" class="jquery project" target="_blank">
+                <img src="media/projects/ipallete.png" alt="">
+                <p>Pick out the main colors from any image with this image parser tool.</p>
+            </a>
+            <a href="https://foobar404.github.io/learn-japanese/" class="jquery project" target="_blank">
+                <img src="media/projects/jp.png" alt="">
+                <p>Learn japanese with this flashcards game.</p>
+            </a>
+            <a href="https://luv.chat/" class="jquery firebase project" target="_blank">
+                <img src="media/projects/luv.png" alt="">
+                <p>Video chat with random singles from around the world.</p>
+            </a>
+            <a href="https://foobar404.github.io/mirrorcss/" class="jquery project" target="_blank">
+                <img src="media/projects/mirror.png" alt="">
+                <p>A library dedicated to mirror and reflective effects with css.</p>
+            </a>
+            <a href="https://pattern.tk/" class="jquery project" target="_blank">
+                <img src="media/projects/pattern.png" alt="">
+                <p>Import background patterns into your website with this css library.</p>
+            </a>
+            <a href="https://foobar404.github.io/JS-Runtime/" class="project" target="_blank">
+                <img src="media/projects/runtime.png" alt="">
+                <p>Track how fast your javascript algorithm is.</p>
+            </a>
+            <a href="https://3ttt.ga/" class="jquery vue project" target="_blank">
+                <img src="media/projects/ttt.png" alt="">
+                <p>Three dimensional tic-tac-toe, a classic game revamped.</p>
+            </a>
+            <a href="https://foobar404.github.io/Wave.js/" class="jquery project" target="_blank">
+                <img src="media/projects/wave.png" alt="">
+                <p>Inject audio visualizations into your website with this javascript framework.</p>
+            </a>
+            <a href="http://hobbychest.com/" class="jquery php project" target="_blank">
+                <img src="media/projects/hobby.png" alt="">
+                <p>Small local hobby shop in the NC area.</p>
+            </a>
+            <a href="https://pretrialnc.com/" class="jquery php project" target="_blank">
+                <img src="media/projects/pretrial.png" alt="">
+                <p>Deferred Prosecution.</p>
+            </a>
+            <a href="https://foobar404.github.io/pluto/" class="project" target="_blank">
+                <img src="media/projects/pluto.jpg" alt="">
+                <p>Free website builder. Want to build a website but with the speed and convenance of a gui? Use Pluto.
+                </p>
+            </a>
+            <a href="https://symbolic-css-website.austinthemichaud.now.sh/" class="react project" target="_blank">
+                <img src="media/projects/symbolic.png" alt="">
+                <p>The next generation of CSS frameworks.</p>
+            </a>
+        </section>
     </main>
     <!-- about -->
     <main id="about_section">
         <img id="pose" src="./media/pose/pose1.png" alt="me standing and looking off to the side">
         <blockquote>
-            I went to college for computer programming for 2.5 years until my car broke down. While in school I worked
-            as a freelance web developer for small local businesses. Currently I am attending the coding boot camp
-            Lambda School full time.
+            After high school I went to college for about 3 years for computer programming.
+            I didn't have much money, so I went to a small community college.
+
+            Throughout college I learn the basics of ~10 languages.
+            Python, C#, C++, COBOL, Visual Basic, Java ect.
+            I went through the process of looking for a language that suited me best.
+            Thats when I eventually settled on web development.
+
+            Web development really stood out because of its GUI toolkit.
+            Creating interfaces for python or java apps was a multi-threaded mess.
+            Which as most people know html & css is very easy to pick up.
+            Although it wasn't the fact that it was easy that drew me in.
+            It was currently just the best tool for the job.
+
+            During my time at college I did some freelance web development for several small local businesses.
+            Mostly working in PHP and with mySQL databases.
+            Those experience really crystallized the idea that I could become a web developer.
+
+            After College I joined a web development technical school called lambda school.
+            Where I studied React and node.js and updated my skills a bit.
+
         </blockquote>
     </main>
 

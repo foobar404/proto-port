@@ -1,0 +1,55 @@
+#project_section {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+#project_section>* {
+    height: 100%;
+}
+
+#project_section #left {
+    width: 30%;
+}
+
+#project_section #left h1 {
+    text-align: center;
+    font-size: 34px;
+}
+
+.skill {
+    color: #ccc;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+.skill:hover {
+    color: black;
+}
+
+#project_section #right {
+    width: 70%;
+    overflow: auto;
+}
+
+.project {
+    float: left;
+    position: relative;
+    height: auto;
+    width: 25%;
+
+}
+
+.project img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.project p {
+    display: none;
+}
+
+.hide {
+    display: none;
+}
