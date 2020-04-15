@@ -5,6 +5,32 @@ const log = console.log
 log("hi friend")
 
 
+//onscroll
+
+// let scroll_items = ["#main_section", "#headline_section", "#project_section", "#about_section"]
+// let scroll_index = 0
+// $("body").onmousewheel = e => {
+//     if (e.wheelDelta > 0) {
+//         scroll_index--
+//     } else {
+//         scroll_index++
+//     }
+
+//     if (scroll_index >= scroll_items.length) {
+//         scroll_index = scroll_items.length - 1
+//     }
+//     if (scroll_index < 0) {
+//         scroll_index = 0;
+//     }
+
+
+//     setTimeout(() => {
+//         $(scroll_items[scroll_index]).scrollIntoView();
+//     }, 500)
+
+// }
+
+
 
 
 
@@ -19,7 +45,6 @@ $$(".face").forEach(elm => {
 })
 
 $("#avatar").onmousemove = (e) => {
-    log(e)
     let transform = `rotate3d(0, 1, 0, ${(e.x / 10) - 30}deg) rotate3d(1, 0, 0, ${-(e.y / 10) + 30}deg)`
     $("#avatar").style.transform = transform
 }
@@ -34,18 +59,18 @@ $("#avatar").onmouseleave = (e) => {
 
 //healine
 $$("video").forEach(video => {
-    video.onmouseenter = e => {
-        e.currentTarget.play()
-    }
-    video.onmouseleave = e => {
-        e.currentTarget.pause()
-    }
+
     video.onclick = e => {
+        if (e.currentTarget.paused) e.currentTarget.play()
+        else e.currentTarget.pause()
+
         $$("video").forEach(video => {
             video.parentNode.classList.toggle("hide")
         })
         e.currentTarget.parentNode.classList.remove("hide")
         e.currentTarget.parentNode.classList.toggle("full")
+
+        e.currentTarget.parentNode.querySelector(".poster").classList.toggle("side_poster")
     }
 })
 
