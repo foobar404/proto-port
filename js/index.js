@@ -5,38 +5,47 @@ const log = console.log
 log("hi friend")
 
 
-//onscroll
-
-// let scroll_items = ["#main_section", "#headline_section", "#project_section", "#about_section"]
-// let scroll_index = 0
-// $("body").onmousewheel = e => {
-//     if (e.wheelDelta > 0) {
-//         scroll_index--
-//     } else {
-//         scroll_index++
-//     }
-
-//     if (scroll_index >= scroll_items.length) {
-//         scroll_index = scroll_items.length - 1
-//     }
-//     if (scroll_index < 0) {
-//         scroll_index = 0;
-//     }
+function isInViewport(element) {
+    var rect = element.getBoundingClientRect();
+    var html = document.documentElement;
+    return (
+        rect.top >= -100 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight + 100 || html.clientHeight + 100) &&
+        rect.right <= (window.innerWidth || html.clientWidth)
+    );
+}
 
 
-//     setTimeout(() => {
-//         $(scroll_items[scroll_index]).scrollIntoView();
-//     }, 500)
+//nav
+$$(".nav_link").forEach(link => {
+    link.onclick = e => {
+        $$(".nav_link").forEach(x => {
+            x.classList.remove("active_link")
+        })
+        e.currentTarget.classList.add("active_link")
+    }
+})
 
-// }
+setInterval(() => {
+    let elms = ["#main_section", "#headline_section", "#project_section", "#about_section"]
+    elms.forEach(elm => {
+        if (isInViewport($(elm))) {
+            $$(".nav_link").forEach(x => {
+                x.classList.remove("active_link")
+            })
 
+            $(`#${$(elm).id}_link`).classList.add("active_link")
+        }
+    })
+}, 300);
 
 
 
 
 //setup main section 
-let left_height = (window.innerHeight / 2)
-let left_percent = (left_height / window.innerWidth) * 100
+let left_height = (document.body.clientHeight / 2)
+let left_percent = (left_height / document.body.clientWidth) * 100
 $("#main_section #left").style.width = `${left_percent}%`
 $("#main_section #right").style.width = `${100 - left_percent}%`
 
@@ -57,7 +66,7 @@ $("#avatar").onmouseleave = (e) => {
     }, 500)
 }
 
-//healine
+//headline
 $$("video").forEach(video => {
 
     video.onclick = e => {

@@ -30,6 +30,11 @@ html {
     scroll-behavior: smooth;
 }
 
+body {
+    cursor: url(http://www.rw-designer.com/cursor-extern.php?id=27268), default;
+    width: 95% !important;
+}
+
 footer {
     width: 100%;
     min-height: 30px;
