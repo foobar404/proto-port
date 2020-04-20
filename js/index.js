@@ -2,8 +2,11 @@ const $ = document.querySelector.bind(document)
 const $$ = document.querySelectorAll.bind(document)
 const log = console.log
 
-log("hi friend")
-
+log(`%cThere once was a man from Tibet,
+Who couldn't find a cigarette.
+So he smoked all his socks,
+and got chicken-pocks,
+and had to go to the vet.`, "color:#222;font-size:22px;font-family:cursive;")
 
 function isInViewport(element) {
     var rect = element.getBoundingClientRect();
@@ -44,15 +47,19 @@ setInterval(() => {
 
 
 //setup main section 
-let left_height = (document.body.clientHeight / 2)
-let left_percent = (left_height / document.body.clientWidth) * 100
-$("#main_section #left").style.width = `${left_percent}%`
-$("#main_section #right").style.width = `${100 - left_percent}%`
+let transform_cache = Array(6).fill(0)
+function run_main_section() {
+    let left_height = (document.body.clientHeight / 2)
+    let left_percent = (left_height / document.body.clientWidth) * 100
+    $("#main_section #left").style.width = `${left_percent}%`
+    $("#main_section #right").style.width = `${100 - left_percent}%`
 
-$$(".face").forEach(elm => {
-    elm.style.transform = getComputedStyle(elm).transform + ` translateZ(${(left_height / 2) - 2}px)`
-})
-
+    $$(".face").forEach((elm, i) => {
+        if (!transform_cache[i]) transform_cache[i] = getComputedStyle(elm).transform
+        elm.style.transform = transform_cache[i] + ` translateZ(${(left_height / 2) - 2}px)`
+    })
+}
+run_main_section()
 $("#avatar").onmousemove = (e) => {
     let transform = `rotate3d(0, 1, 0, ${(e.x / 10) - 30}deg) rotate3d(1, 0, 0, ${-(e.y / 10) + 30}deg)`
     $("#avatar").style.transform = transform
@@ -121,3 +128,8 @@ $("#pose").onmouseleave = e => {
     hue = 0
     $("#pose").style.filter = `hue-rotate(${hue}deg)`
 }
+
+
+window.addEventListener('resize', function () {
+    run_main_section()
+});

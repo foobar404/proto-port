@@ -2,6 +2,7 @@
     height: 100%;
     width: 100%;
     display: flex;
+    background: #000;
 }
 
 #main_section #left {
@@ -9,6 +10,7 @@
     flex-direction: column;
     height: 100%;
     width: 25%;
+    background: #fff;
 }
 
 #main_section #left>* {
@@ -70,4 +72,5 @@
 #main_section #right {
     height: 100%;
     width: 70%;
+    background: linear-gradient(to right, #8e0e00, #000);
 }

@@ -3,45 +3,57 @@ window.addEventListener('DOMContentLoaded', function () {
     let engine = new BABYLON.Engine(canvas, true);
 
     let createScene = function () {
-        // Create a basic BJS Scene object.
         let scene = new BABYLON.Scene(engine);
-
-        // Create a FreeCamera, and set its position to (x:0, y:5, z:-10).
-        let camera = new BABYLON.FreeCamera('camera', new BABYLON.Vector3(0, 5, -10), scene);
-
-        // Target the camera to scene origin.
-        camera.setTarget(BABYLON.Vector3.Zero());
-
-        // Attach the camera to the canvas.
+        scene.clearColor = BABYLON.Color3.Black;
+        let camera = new BABYLON.ArcRotateCamera("camera1", 0, 0, 0, new BABYLON.Vector3(0, 0, -0), scene);
+        camera.setPosition(new BABYLON.Vector3(0, 50, -200));
         camera.attachControl(canvas, false);
 
-        // Create a basic light, aiming 0,1,0 - meaning, to the sky.
-        // let light = new BABYLON.HemisphericLight('light1', new BABYLON.Vector3(0, 1, 0), scene);
-        var light = new BABYLON.PointLight("Omni", new BABYLON.Vector3(10, 50, 50), scene);
+        // let light = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(1, 0, 0), scene);
+        // light.intensity = 0.85;
+        // light.specular = new BABYLON.Color3(0.95, 0.95, 0.81);
 
-        // Skybox
-        let skybox = BABYLON.Mesh.CreateBox("skyBox", 100.0, scene);
-        let skyboxMaterial = new BABYLON.StandardMaterial("skyBox", scene);
-        skyboxMaterial.backFaceCulling = false;
-        skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture("./media/skybox/skybox", scene);
-        skyboxMaterial.reflectionTexture.coordinatesMode = BABYLON.Texture.SKYBOX_MODE;
-        skyboxMaterial.diffuseColor = new BABYLON.Color3(0, 0, 0);
-        skyboxMaterial.specularColor = new BABYLON.Color3(0, 0, 0);
-        skyboxMaterial.disableLighting = true;
-        skybox.material = skyboxMaterial;
+        let pl = new BABYLON.PointLight("pl", new BABYLON.Vector3(0, 0, 0), scene);
+        pl.diffuse = new BABYLON.Color3(1, 1, 1);
+        pl.intensity = 1.0;
+
+        let nb = 20000//160000;    		// nb of triangles
+        let fact = 100; 			// cube size
+
+        // custom position function for SPS creation
+        let myPositionFunction = function (particle, i, s) {
+            particle.position.x = (Math.random() - 0.5) * fact;
+            particle.position.y = (Math.random() - 0.5) * fact;
+            particle.position.z = (Math.random() - 0.5) * fact;
+            particle.rotation.x = Math.random() * 3.15;
+            particle.rotation.y = Math.random() * 3.15;
+            particle.rotation.z = Math.random() * 1.5;
+            particle.color = new BABYLON.Color4(particle.position.x / fact + 0.5, particle.position.y / fact + 0.5, particle.position.z / fact + 0.5, 1.0);
+        };
+
+        // model : triangle
+        let triangle = BABYLON.MeshBuilder.CreateDisc("t", { tessellation: 3, sideOrientation: BABYLON.Mesh.DOUBLESIDE }, scene);
+
+        // SPS creation : Immutable {updatable: false}
+        let SPS = new BABYLON.SolidParticleSystem('SPS', scene, { updatable: false });
+        SPS.addShape(triangle, nb, { positionFunction: myPositionFunction });
+        let mesh = SPS.buildMesh();
 
 
-        var material1 = new BABYLON.StandardMaterial("mat1", scene);
-        material1.diffuseColor = new BABYLON.Color3(1, 1, 0);
-        var box = BABYLON.Mesh.CreateBox("Box", 1.0, scene);
-        box.material = material1;
-        box.position = new BABYLON.Vector3(0, 0, 0);
+        // dispose the model
+        triangle.dispose();
 
-        // Return the created scene.
+        // SPS mesh animation
+        scene.registerBeforeRender(function () {
+            pl.position = camera.position;
+            SPS.mesh.rotation.y += 0.01;
+            //SPS.mesh.rotation.z += 0.005;
+        });
+
         return scene;
     }
 
-    var scene = createScene();
+    let scene = createScene();
     engine.runRenderLoop(function () {
         scene.render();
     });
@@ -49,3 +61,5 @@ window.addEventListener('DOMContentLoaded', function () {
         engine.resize();
     });
 });
+
+
