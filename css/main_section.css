@@ -19,35 +19,7 @@
 }
 
 #left #avatar {
-    position: relative;
-    transform-style: preserve-3d;
-}
-
-#avatar .face {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-}
-
-.face.front {
     object-fit: cover;
-    transform: rotateY(0deg);
-}
-
-.face.left {
-    transform: rotateY(-90deg);
-}
-
-.face.right {
-    transform: rotateY(90deg);
-}
-
-.face.top {
-    transform: rotateX(90deg);
-}
-
-.face.bottom {
-    transform: rotateX(-90deg);
 }
 
 #info #links {
@@ -59,18 +31,89 @@
     text-align: center;
 }
 
-#info h3 {
-    text-align: center;
-}
-
 #info #links * {
     color: black;
     font-size: 20px;
     margin-left: 15px;
 }
 
+#info #links a {
+    text-decoration: none;
+}
+
+#info #links a span {
+    text-decoration: underline;
+}
+
 #main_section #right {
     height: 100%;
     width: 70%;
-    background: linear-gradient(to right, #8e0e00, #000);
+    background: #000;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#main_section #right canvas {
+    height: 100%;
+    width: 100%;
+}
+
+/* 3d name  */
+
+.main_text {
+    color: white;
+    margin-right: 18px;
+    white-space: nowrap;
+    text-align: center;
+
+}
+
+.text_top span {
+    font-size: 5vw;
+    font-family: 'Fugaz One', cursive !important;
+}
+
+.text_bottom span {
+    font-size: 3.5vw;
+    font-family: 'Courgette', cursive !important;
+}
+
+.main_text span {
+    transform-style: preserve-3d;
+    -webkit-perspective: 500;
+    perspective: 500;
+    position: relative;
+}
+
+/* shadow */
+.main_text span::before {
+    z-index: 1;
+    color: rgba(0, 0, 0, 0.2);
+    -webkit-transform: scale(1.1, 1) skew(0deg, 20deg);
+    transform: scale(1.1, 1) skew(0deg, 20deg);
+}
+
+.main_text span::after {
+    color: black;
+    text-shadow: -1px 0 1px #684da3, 1px 0 1px rgba(0, 0, 0, 0.8);
+    transform: rotateY(-40deg) translate(-7px, 0px);
+}
+
+.main_text span::before,
+.main_text span::after {
+    position: absolute;
+    top: 0;
+    left: -1px;
+    transition: .3s ease;
+    content: attr(data-text);
+}
+
+.main_text span:hover::after {
+    transform: rotateY(-10deg);
+}
+
+.main_text span:hover::before {
+    transform: scale(1.1, 1) skew(0deg, 5deg);
 }

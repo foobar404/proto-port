@@ -7,7 +7,7 @@ window.addEventListener('DOMContentLoaded', function () {
         scene.clearColor = BABYLON.Color3.Black;
         let camera = new BABYLON.ArcRotateCamera("camera1", 0, 0, 0, new BABYLON.Vector3(0, 0, -0), scene);
         camera.setPosition(new BABYLON.Vector3(0, 50, -200));
-        camera.attachControl(canvas, false);
+        camera.attachControl(canvas, true);
 
         // let light = new BABYLON.HemisphericLight("light1", new BABYLON.Vector3(1, 0, 0), scene);
         // light.intensity = 0.85;

@@ -32,7 +32,20 @@ html {
 
 body {
     cursor: url(http://www.rw-designer.com/cursor-extern.php?id=27268), default;
-    width: 95% !important;
+}
+
+p,
+blockquote,
+li,
+a,
+span {
+    font-family: 'Lato', sans-serif;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Vollkorn', serif;
 }
 
 footer {
@@ -40,9 +53,33 @@ footer {
     min-height: 30px;
     padding: 7px 0px;
     display: flex;
+    position: relative;
     justify-content: center;
+    flex-direction: column;
 
     background: #000;
     color: white;
     text-align: center;
+}
+
+footer p {
+    margin: 0;
+}
+
+footer #barcode {
+    font-family: 'Libre Barcode 39', cursive;
+    color: white;
+    font-size: 40px;
+    margin-top: 3px;
+}
+
+#desktop {
+    height: 100%;
+    width: 95%;
+}
+
+#mobile {
+    height: 100%;
+    width: 100%;
+    display: none;
 }

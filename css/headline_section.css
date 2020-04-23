@@ -3,8 +3,6 @@
     height: 100%;
     width: 100%;
     background: #000;
-
-
 }
 
 #headline_section section {
@@ -46,25 +44,29 @@
     justify-content: center;
     flex-direction: column;
 
-    font-size: 30px;
-    font-weight: 700;
     color: white;
 }
 
+.poster h1 {
+    font-size: 34px;
+}
+
 .poster1 {
-    background: #ffa9b8;
+    background: #00a1f1;
 }
 
 .poster2 {
-    background: #00ff95;
+    background: #7cb700;
 }
 
 .poster3 {
-    background: #007eff;
+    background: #ffbb00;
 }
 
 .poster .content {
     display: none;
+    font-size: 26px;
+    overflow: auto;
 }
 
 .side_poster {

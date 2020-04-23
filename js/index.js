@@ -1,6 +1,3 @@
-const $ = document.querySelector.bind(document)
-const $$ = document.querySelectorAll.bind(document)
-const log = console.log
 
 log(`%cThere once was a man from Tibet,
 Who couldn't find a cigarette.
@@ -8,128 +5,120 @@ So he smoked all his socks,
 and got chicken-pocks,
 and had to go to the vet.`, "color:#222;font-size:22px;font-family:cursive;")
 
-function isInViewport(element) {
-    var rect = element.getBoundingClientRect();
-    var html = document.documentElement;
-    return (
-        rect.top >= -100 &&
-        rect.left >= 0 &&
-        rect.bottom <= (window.innerHeight + 100 || html.clientHeight + 100) &&
-        rect.right <= (window.innerWidth || html.clientWidth)
-    );
-}
 
+if (window.innerWidth > window.innerHeight) {
 
-//nav
-$$(".nav_link").forEach(link => {
-    link.onclick = e => {
-        $$(".nav_link").forEach(x => {
-            x.classList.remove("active_link")
-        })
-        e.currentTarget.classList.add("active_link")
+    function isInViewport(element) {
+        var rect = element.getBoundingClientRect();
+        var html = document.documentElement;
+        return (
+            rect.top >= -100 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight + 100 || html.clientHeight + 100) &&
+            rect.right <= (window.innerWidth || html.clientWidth)
+        );
     }
-})
 
-setInterval(() => {
-    let elms = ["#main_section", "#headline_section", "#project_section", "#about_section"]
-    elms.forEach(elm => {
-        if (isInViewport($(elm))) {
+    //nav
+    $$(".nav_link").forEach(link => {
+        link.onclick = e => {
             $$(".nav_link").forEach(x => {
                 x.classList.remove("active_link")
             })
-
-            $(`#${$(elm).id}_link`).classList.add("active_link")
+            e.currentTarget.classList.add("active_link")
         }
     })
-}, 300);
 
+    setInterval(() => {
+        let elms = ["#main_section", "#headline_section", "#project_section", "#about_section"]
+        elms.forEach(elm => {
+            if (isInViewport($(elm))) {
+                $$(".nav_link").forEach(x => {
+                    x.classList.remove("active_link")
+                })
 
+                $(`#${$(elm).id}_link`).classList.add("active_link")
+            }
+        })
+    }, 300);
 
+    //setup main section 
+    function run_main_section() {
+        let left_height = ($("#desktop").clientHeight / 2)
+        let left_percent = (left_height / $("#desktop").clientWidth) * 100
+        $("#main_section #left").style.width = `${left_percent}%`
+        $("#main_section #right").style.width = `${100 - left_percent}%`
+    }
 
-//setup main section 
-let transform_cache = Array(6).fill(0)
-function run_main_section() {
-    let left_height = (document.body.clientHeight / 2)
-    let left_percent = (left_height / document.body.clientWidth) * 100
-    $("#main_section #left").style.width = `${left_percent}%`
-    $("#main_section #right").style.width = `${100 - left_percent}%`
+    run_main_section()
 
-    $$(".face").forEach((elm, i) => {
-        if (!transform_cache[i]) transform_cache[i] = getComputedStyle(elm).transform
-        elm.style.transform = transform_cache[i] + ` translateZ(${(left_height / 2) - 2}px)`
-    })
-}
-run_main_section()
-$("#avatar").onmousemove = (e) => {
-    let transform = `rotate3d(0, 1, 0, ${(e.x / 10) - 30}deg) rotate3d(1, 0, 0, ${-(e.y / 10) + 30}deg)`
-    $("#avatar").style.transform = transform
-}
-
-$("#avatar").onmouseleave = (e) => {
-    $("#avatar").style.transition = ".5s cubic-bezier(0, 0.74, 0.58, 1)"
-    $("#avatar").style.transform = ""
-    setTimeout(() => {
-        $("#avatar").style.transition = ""
-    }, 500)
-}
-
-//headline
-$$("video").forEach(video => {
-
-    video.onclick = e => {
-        if (e.currentTarget.paused) e.currentTarget.play()
-        else e.currentTarget.pause()
+    //headline
+    function toggle_video(video) {
+        if (video.paused) video.play()
+        else video.pause()
 
         $$("video").forEach(video => {
             video.parentNode.classList.toggle("hide")
         })
-        e.currentTarget.parentNode.classList.remove("hide")
-        e.currentTarget.parentNode.classList.toggle("full")
+        video.parentNode.classList.remove("hide")
+        video.parentNode.classList.toggle("full")
 
-        e.currentTarget.parentNode.querySelector(".poster").classList.toggle("side_poster")
+        video.parentNode.querySelector(".poster").classList.toggle("side_poster")
     }
-})
 
-//projects
+    $$("video").forEach(video => {
 
-$$(".project").forEach(p => {
-    p.style.height = getComputedStyle(p).width
-})
+        video.onclick = e => {
+            toggle_video(e.currentTarget)
+        }
+    })
 
-$$(".skill").forEach(skill => {
-    skill.onclick = e => {
-        $$(".skill").forEach(x => {
-            x.style.color = ""
-        })
+    $$(".poster").forEach(poster => {
+        poster.onclick = e => {
+            let video = e.currentTarget.nextElementSibling;
+            toggle_video(video)
+        }
+    })
 
-        let skill_name = e.currentTarget.innerText;
-        e.currentTarget.style.color = "#0089ff"
+    //projects
 
-        $$(".project").forEach(project => {
-            project.classList.add("hide")
-        })
+    $$(".project").forEach(project => {
+        project.onclick = e => {
+            e.currentTarget.querySelector(".project_about").classList.toggle("show")
+        }
+    })
 
-        $$(`.${skill_name}`).forEach(i => {
-            i.classList.remove("hide")
-        })
-    }
-})
+    $$(".skill").forEach(skill => {
+        skill.onclick = e => {
+            //highlight active skill 
+            $$(".skill").forEach(x => {
+                x.style.color = ""
+            })
+            e.currentTarget.style.color = "#0089ff"
+
+            let skill_name = e.currentTarget.innerText.toLowerCase();
+
+            if (skill_name == "all") {
+                $$(".project").forEach(project => {
+                    project.classList.remove("hide")
+                })
+                return
+            }
+
+            $$(".project").forEach(project => {
+                project.classList.add("hide")
+            })
+
+            $$(`.${skill_name}`).forEach(i => {
+                i.classList.remove("hide")
+            })
+        }
+    })
 
 
+    //extra
+    window.addEventListener('resize', function () {
+        run_main_section()
+    });
 
-//about
-let hue = 0
-$("#pose").onmousemove = e => {
-    hue += 5
-    $("#pose").style.filter = `hue-rotate(${hue}deg)`
 }
-
-$("#pose").onmouseleave = e => {
-    hue = 0
-    $("#pose").style.filter = `hue-rotate(${hue}deg)`
-}
-
-
-window.addEventListener('resize', function () {
-    run_main_section()
-});
