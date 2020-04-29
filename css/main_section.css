@@ -127,4 +127,16 @@
     #main_section>* {
         width: 100% !important;
     }
+
+    .main_text span::after {
+        transform: rotateY(-40deg) translate(-2px, 0px);
+    }
+
+    .text_top span {
+        font-size: 8vw;
+    }
+
+    .text_bottom span {
+        font-size: 6.5vw;
+    }
 }

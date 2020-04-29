@@ -37,3 +37,17 @@
 #about_section blockquote::-webkit-scrollbar-thumb {
     background: transparent !important;
 }
+
+@media (max-width:700px) {
+    #about_section {
+        height: auto;
+    }
+
+    #about_section img {
+        display: none;
+    }
+
+    #about_section blockquote {
+        width: 100% !important;
+    }
+}

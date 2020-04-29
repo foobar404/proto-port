@@ -74,7 +74,8 @@
     background: linear-gradient(to right, black, black, transparent) !important;
     padding-top: 30px !important;
     justify-content: start !important;
-    padding-left: 20px;
+    box-sizing: border-box;
+    padding: 20px;
     z-index: 1;
 }
 
@@ -110,5 +111,13 @@
 
     #headline_section section {
         width: 100%;
+    }
+
+    #headline_section section:hover {
+        width: 100% !important;
+    }
+
+    .side_poster {
+        width: 100% !important;
     }
 }
