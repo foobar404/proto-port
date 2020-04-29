@@ -1,3 +1,6 @@
+const $ = document.querySelector.bind(document)
+const $$ = document.querySelectorAll.bind(document)
+const log = console.log
 
 log(`%cThere once was a man from Tibet,
 Who couldn't find a cigarette.

@@ -102,3 +102,13 @@
     justify-content: center;
 
 }
+
+@media (max-width:800px) {
+    #headline_section {
+        flex-direction: column;
+    }
+
+    #headline_section section {
+        width: 100%;
+    }
+}

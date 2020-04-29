@@ -32,3 +32,13 @@ nav a:hover {
 .active_link {
     color: #fff;
 }
+
+@media (max-width:800px) {
+    nav {
+        display: none;
+    }
+
+    #desktop {
+        width: 100% !important;
+    }
+}

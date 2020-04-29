@@ -117,3 +117,14 @@
 .main_text span:hover::before {
     transform: scale(1.1, 1) skew(0deg, 5deg);
 }
+
+
+@media (max-width:800px) {
+    #main_section {
+        flex-direction: column-reverse;
+    }
+
+    #main_section>* {
+        width: 100% !important;
+    }
+}
