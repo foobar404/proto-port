@@ -192,8 +192,9 @@
 
     #project_section ul {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         padding: 0;
+        list-style-type: none;
     }
 
     #project_section #left {
